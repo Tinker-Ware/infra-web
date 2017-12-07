@@ -1,0 +1,48 @@
+---
+
+## BASE
+server_user: tinkerware
+server_group: tinkerware
+
+users:
+  - name: tinkerware
+    group: tinkerware
+    generate_ssh_key: yes
+    extra_groups: sudo
+    password: $6$RuvJTX8llN1Vs$7Zgfg63xj5ICCrGUBgc6FcTcmiyB4vnBR65Q5FluigO35nnkem74kzigfeaCz8XJBAjlAWeUVvlUt5m7KHqv6.
+
+private_key: yes
+private_key_name: ansible_id_rsa
+
+gitconfig:
+  user: tinkerware
+  ssh: yes
+  ssh_key_path: "/home/tinkerware/.ssh/ansible_id_rsa"
+  option:
+    user_email: tinkerwareio@gmail.com
+    user_name: tinkerwarebot
+
+
+### REACT
+## Node
+nodejs_version: 'nodejs-v6x'
+npm_version: '2.14.7'
+nodejs_npm_packages:
+  - name: react
+
+## React
+github_repo: "https://github.com/Tinker-Ware/eyes.git"
+github_repo_version: master
+react_production: yes
+react_production_command: "npm run production"
+
+### NGINX
+nginx_vhosts:
+ 
+  - server_name: "tinkerware.io"
+    listen: "80"
+    root: "/opt/tinker/shared_files/tinkerware_react/homepage.git/dist" 
+ 
+nginx_remove_default_vhost: true
+
+

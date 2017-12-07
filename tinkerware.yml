@@ -1,0 +1,9 @@
+---
+- hosts: tinkerware
+  roles:
+    - { role: base, become: yes, tags: [base, services] }
+    - { role: react, tags: [services, react] }
+    - { role: react, server_group: "tinkerware", server_user: "tinkerware", github_repo: "https://github.com/Tinker-Ware/homepage.git", github_repo_version: "master", react_production: yes, react_production_command: "npm run production" }
+    - { role: web, become: yes }
+    - { role: nginx, become: yes, tags: [buildbot, nginx] }
+

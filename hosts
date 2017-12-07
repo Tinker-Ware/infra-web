@@ -1,0 +1,5 @@
+#tinkerware.provision ansible_ssh_private_key_file=infrastructure-ans-24.pem ansible_user=admin ansible_ssh_host=18.217.7.13
+tinkerware.provision ansible_ssh_host=104.236.80.188 ansible_user=root
+
+[tinkerware]
+tinkerware.provision

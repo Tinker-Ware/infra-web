@@ -1,0 +1,18 @@
+---
+- name: Folder in opt for repos
+  become: yes
+  file:
+    path={{ repo_path }}
+    owner={{ server_user }}
+    group={{ server_group }}
+    mode=0755
+    state=directory
+
+- name: Clone git repo
+  git:
+    repo="{{ github_repo }}"
+    dest="{{ repo_path }}/{{ server_name }}"
+    force=yes
+    update=yes
+  become: yes
+  become_user: "{{ server_user }}"
